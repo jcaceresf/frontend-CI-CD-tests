@@ -20,7 +20,7 @@ export const div = (a: number, b: number) => {
   return a / b;
 };
 
-export const module = (a: number, b: number) => {
+export const modFunction = (a: number, b: number) => {
   return a % b;
 };
 
