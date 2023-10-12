@@ -24,4 +24,4 @@ jobs:
     - name: Ejecutar tests
       run: |
         cd packages/web
-        yarn test
+        yarn test --detectOpenHandles
