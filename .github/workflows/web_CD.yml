@@ -9,43 +9,37 @@ on:
       - 'packages/web/**'    
       
 jobs:
-  build:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
-
     - name: Checkout Repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v2
 
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v2
       with:
-        node-version: 18
+        node-version: '18'
         cache: 'npm'
-        cache-dependency-path: Infra/package-lock.json
 
-    - name: Install dependencies
-      run: npm install 
-      
+    # Instalar dependencias y construir la aplicación web
+    - name: Install web app dependencies
+      working-directory: packages/web
+      run: npm install
+
     - name: Build web app
-      working-directory: ./packages/web
-      run: yarn build
+      working-directory: packages/web
+      run: npm run build
 
-    - name: Install dependencies
+    # Instalar dependencias y desplegar la infraestructura con AWS CDK
+    - name: Install Infra dependencies
       working-directory: Infra
-      run: npm ci
+      run: npm install
 
-    - name: cdk deploy infra
-      uses: youyo/aws-cdk-github-actions@v2
-      with:
-        cdk_subcommand: 'deploy'
-        working_dir: 'Infra'
-        cdk_args: '--require-approval never'
-        actions_comment: false
+    - name: Deploy infrastructure with CDK
+      working-directory: Infra
+      run: npx cdk deploy --require-approval never
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION: 'us-east-1'
-
-
-
