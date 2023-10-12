@@ -3,8 +3,11 @@ name: Web CI
 
 on:
   pull_request:
+    branches:
+      - develop
+      - main
     paths:
-      - 'packages/web/**'
+      - 'packages/web/**'    
 
 jobs:
   build:
