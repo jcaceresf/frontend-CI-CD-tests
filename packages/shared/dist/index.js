@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.apicall = exports.module = exports.div = exports.mul = exports.sub = exports.add = exports.logFxn = exports.msg = void 0;
+exports.apicall = exports.modFunction = exports.div = exports.mul = exports.sub = exports.add = exports.logFxn = exports.msg = void 0;
 exports.msg = 'From Shared Folder';
 const logFxn = () => {
     console.log('This is a function from shared folder');
@@ -31,10 +31,10 @@ const div = (a, b) => {
     return a / b;
 };
 exports.div = div;
-const module = (a, b) => {
+const modFunction = (a, b) => {
     return a % b;
 };
-exports.module = module;
+exports.modFunction = modFunction;
 const apicall = () => __awaiter(void 0, void 0, void 0, function* () {
     const response = yield fetch('https://jsonplaceholder.typicode.com/posts');
     const json = yield response.json();

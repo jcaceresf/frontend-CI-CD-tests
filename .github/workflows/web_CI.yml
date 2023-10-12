@@ -1,0 +1,27 @@
+
+name: Web CI
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+    paths:
+      - 'packages/web/**'    
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Instalar dependencias
+      run: |
+        cd packages/web
+        yarn install
+
+    - name: Ejecutar tests
+      run: |
+        cd packages/web
+        yarn test --detectOpenHandles
