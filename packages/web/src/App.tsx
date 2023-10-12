@@ -30,7 +30,7 @@ function App() {
       setModresult(mod_value);
       setDivresult(div_value);
     } else {
-      alert('Please input number');
+      alert('Please input number test');
     }
   };
 
