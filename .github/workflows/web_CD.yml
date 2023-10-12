@@ -25,7 +25,6 @@ jobs:
         cache-dependency-path: Infra/package-lock.json
 
     - name: Install dependencies
-      working-directory: ./packages/web
       run: npm install 
       
     - name: Build web app
