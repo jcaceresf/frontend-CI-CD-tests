@@ -9,7 +9,7 @@ import {
   FlatList,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {msg, logFxn, add, sub, mul, div, module, apicall} from 'shared';
+import {msg, add, sub, mul, div, modFunction, apicall} from 'shared';
 
 type Props = {};
 
@@ -33,7 +33,7 @@ const App = (props: Props) => {
       const add_value: number = add(num1, num2);
       const sub_value: number = sub(num1, num2);
       const mul_value: number = mul(num1, num2);
-      const mod_value: number = module(num1, num2);
+      const mod_value: number = modFunction(num1, num2);
       const div_value: number = div(num1, num2);
       setAddresult(add_value);
       setDiffresult(sub_value);
