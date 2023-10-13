@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import { msg, logFxn, add, sub, mul, div, modFunction, apicall } from 'shared';
+import { msg, add, sub, mul, div, modFunction, apicall } from 'shared';
 
 function App() {
   const [num1, setNum1] = useState<number>(0);
@@ -11,7 +11,6 @@ function App() {
   const [modresult, setModresult] = useState<number>();
   const [divresult, setDivresult] = useState<number>();
   const [apiresponse, setApiresponse] = useState<any>([]);
-  const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   useEffect(() => {
     apicall().then((res) => setApiresponse(res));
